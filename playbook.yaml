@@ -1,0 +1,9 @@
+---
+- hosts: all
+  tasks:
+    - name: gather ec2 facts
+      action: ec2_facts
+
+    - name: install apache on debian or ubuntu instances
+      apt: name=apache2 state=present
+      when: ansible_os_family == "Debian"
